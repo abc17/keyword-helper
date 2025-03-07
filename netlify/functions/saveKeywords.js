@@ -1,4 +1,3 @@
-
 const { writeFileSync } = require('fs');
 const multiparty = require('multiparty');
 
@@ -16,7 +15,11 @@ exports.handler = async (event) => {
             }
 
             const file = files.file[0];
-            const content = require('fs').readFileSync(file.path, 'utf8');
+            let content = require('fs').readFileSync(file.path, 'utf8');
+
+            // Удаляем все кавычки, если они есть
+            content = content.replace(/"/g, '').trim();
+
             writeFileSync('/tmp/keywords.csv', content);
 
             return resolve({ statusCode: 200, body: 'File saved' });
