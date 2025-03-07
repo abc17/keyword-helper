@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Keyword Helper</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; box-sizing: border-box; }
+        .container { display: flex; gap: 20px; }
+        .left-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; flex: 2; }
+        .right-panel { flex: 1; position: sticky; top: 20px; align-self: flex-start; margin-left: 40px; }
+        .group h3 { margin: 0 0 5px; font-size: 16px; font-weight: bold; color: #444; }
+        .word-list { display: flex; flex-wrap: wrap; gap: 5px; }
+        .word { background: #f7f7f7; border: 1px solid #ccc; padding: 5px 10px; cursor: pointer; transition: background 0.2s; border-radius: 5px; font-size: 14px; }
+        .word.selected { background: #d0f0d0; border-color: #4caf50; }
+        .word:hover { background: #e0e0e0; }
+        .keyword { display: inline-flex; align-items: center; background: #e0e0e0; padding: 5px 10px; margin: 3px; border-radius: 5px; }
+        .keyword span { margin-left: 8px; cursor: pointer; color: red; font-weight: bold; }
+        #keywordsContainer { display: flex; flex-wrap: wrap; min-height: 50px; border: 1px solid #ccc; padding: 5px; }
+        button { width: 100%; padding: 10px; font-size: 16px; margin-top: 10px; }
+        #clearAll { display: inline-block; margin-top: 8px; color: #888; text-decoration: underline; cursor: pointer; font-size: 14px; }
+        input[type="file"] { margin-bottom: 10px; }
+        @media (max-width: 768px) {
+            .left-panel { grid-template-columns: 1fr; }
+            .right-panel { margin-left: 0; }
+        }
+    </style>
+</head>
+<body>
+    <h2>Keyword Helper</h2>
+
+    <input type="file" id="fileInput" accept=".csv" />
+    <div class="container">
+        <div class="left-panel" id="wordList"></div>
+        <div class="right-panel">
+            <div id="keywordsContainer"></div>
+            <p>Total words: <span id="wordCount">0</span></p>
+            <button onclick="copyToClipboard()">Copy all keywords</button>
+            <div id="clearAll" onclick="clearAll()">clear all</div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
