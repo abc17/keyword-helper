@@ -15,11 +15,13 @@ function parseCSV(csvText) {
     rows.forEach(row => {
         const [category, ...keywords] = row.split(',');
         if (category && keywords.length) {
-            const cleanedKeywords = keywords.map(keyword => keyword.replace(/^"|"$/g, '').trim());
+            // Очистка от кавычек и пробелов
+            const cleanedKeywords = keywords.map(keyword => keyword.replace(/"/g, '').trim());
             words.push({ group: category, list: cleanedKeywords });
         }
     });
 }
+
 
 
 document.getElementById('fileInput').addEventListener('change', function(event) {
