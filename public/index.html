@@ -41,6 +41,26 @@
 
     <script src="app.js"></script>
 
+<p style="text-align: center;">Buy me a coffee: 
+  <span id="walletAddress" 
+        style="text-decoration: underline; cursor: pointer;" 
+        title="Click to copy"
+        onclick="copyWalletAddress()">TS3LGHU9M16qceCkf5X4nXruFgYbRMxo6u</span> USDT on TRC20
+</p>
+
+<script>
+  function copyWalletAddress() {
+    const walletText = document.getElementById('walletAddress');
+    const range = document.createRange();
+    range.selectNode(walletText);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    document.execCommand('copy');
+    
+
+  }
+</script>
+    
 <script data-collect-dnt="true" async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
 <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif?collect-dnt=true" alt="" referrerpolicy="no-referrer-when-downgrade"/></noscript>
 
